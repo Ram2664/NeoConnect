@@ -1,10 +1,16 @@
 [build]
-  base = "frontend"
   command = "npm run build"
   publish = ".next"
 
-[build.environment]
-  NODE_VERSION = "20"
-
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+# Redirect all requests to Next.js
+[[redirects]]
+  from = "/*"
+  to = "/:splat"
+  status = 200
+  force = false
