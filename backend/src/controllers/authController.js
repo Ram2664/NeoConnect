@@ -63,7 +63,7 @@ async function login(req, res) {
     }
 
     if (!user.isActive) {
-      res.status(401).json({ message: "This account is inactive." });
+      res.status(401).json({ message: "Admin approval is pending. Contact IT support." });
       return;
     }
 
