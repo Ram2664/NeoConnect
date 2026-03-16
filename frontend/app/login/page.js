@@ -212,7 +212,7 @@ export default function LoginPage() {
                   <Input
                     id="register-password"
                     type="password"
-                    placeholder="password"
+                    placeholder="At least 8 characters"
                     value={registerForm.password}
                     onChange={(event) =>
                       setRegisterForm({
@@ -221,6 +221,7 @@ export default function LoginPage() {
                       })
                     }
                     required
+                    minLength={8}
                   />
                 </div>
 

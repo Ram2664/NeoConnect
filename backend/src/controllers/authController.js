@@ -19,6 +19,19 @@ async function register(req, res) {
   try {
     const { name, email, password, role, department } = req.body;
 
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      res.status(400).json({ message: "Please enter a valid email address." });
+      return;
+    }
+
+    // Validate password strength
+    if (!password || password.length < 8) {
+      res.status(400).json({ message: "Password must be at least 8 characters long." });
+      return;
+    }
+
     const existingUser = await User.findOne({ email });
 
     if (existingUser) {
